@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+apply plugin: 'application'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+project.ext {
+    configPath = "C:\\Users\\Administrator\\IdeaProjects\\prompts\\src\\main\\java\\com\\prompt\\dropWizard\\"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies { //todo lombok
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'redis.clients:jedis:3.2.0'
+    compile 'io.dropwizard:dropwizard-core:0.8.0'
+}
+mainClassName = "com.prompt.dropWizard.PromptService"
+
+run {
+    args 'server', configPath + 'app_config.yml'
+}
